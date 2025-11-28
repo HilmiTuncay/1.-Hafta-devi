@@ -1,155 +1,98 @@
 # Kütüphane Yönetim Sistemi
 
-Basit ve kullanışlı bir kitap yönetim programı. Python öğrenme sürecinde edinilen temel kavramları (sınıflar, fonksiyonlar, döngüler, koşullar) kullanarak geliştirilmiştir.
-
-## Proje Hakkında
-
-Bu proje, bir kütüphanedeki kitapların yönetimini sağlayan konsolda çalışan bir Python uygulamasıdır. Kullanıcılar kitap ekleyebilir, silebilir, arayabilir ve mevcut kitapları listeleyebilir.
+Python ile geliştirilmiş basit kitap yönetim programı.
 
 ## Özellikler
 
-- **Kitap Ekleme**: Yeni kitapları ISBN, başlık, yazar ve yayın yılı bilgileriyle ekleyin
-- **Kitap Silme**: ISBN numarasıyla kitapları kütüphaneden kaldırın
-- **Kitap Arama**: Kitap adı veya yazar adına göre arama yapın
-- **Listeleme**: Kütüphanedeki tüm kitapları görüntüleyin
-- **ISBN Kontrolü**: Aynı ISBN'li kitabın tekrar eklenmesini önler
-- **Kullanıcı Dostu Arayüz**: Anlaşılır menü ve mesajlar
+- Kitap ekleme, silme, arama ve listeleme
+- ISBN kontrolü
+- Kullanıcı dostu menü sistemi
 
-## Teknik Detaylar
+## Çalıştırma
 
-### Kullanılan Yapılar
-
-**Sınıflar (Classes):**
-- `Kitap`: Her bir kitabın bilgilerini tutar
-- `Kutuphane`: Kütüphane işlemlerini yönetir
-
-**Fonksiyonlar (Functions):**
-- `kitap_ekle()`: Yeni kitap ekleme
-- `kitap_sil()`: Kitap silme
-- `kitap_ara()`: Kitap arama
-- `tum_kitaplari_listele()`: Tüm kitapları görüntüleme
-- `menu_goster()`: Menü gösterimi
-- `main()`: Ana program döngüsü
-
-**Özellikler:**
-- OOP (Nesne Yönelimli Programlama) prensipleri
-- Liste veri yapısı
-- Döngüler (for, while)
-- Koşul ifadeleri (if-elif-else)
-- String işlemleri
-
-## Kurulum ve Çalıştırma
-
-### Gereksinimler
-- Python 3.6 veya üzeri
-
-### Çalıştırma
 ```bash
 python kutuphane_yonetimi.py
 ```
 
-## Kullanım
+## Proje Yapısı
 
-Program başlatıldığında ana menü görünür:
+### Sınıflar (2 adet)
+- **Kitap**: Kitap bilgilerini tutar
+- **Kutuphane**: Kütüphane işlemlerini yönetir
 
-```
-==================================================
-📚 KÜTÜPHANE YÖNETİM SİSTEMİ
-==================================================
-1. Yeni Kitap Ekle
-2. Kitap Sil
-3. Kitap Ara
-4. Tüm Kitapları Listele
-5. Çıkış
-==================================================
-```
+### Fonksiyonlar (4+ adet)
+- `kitap_ekle()` - Yeni kitap ekler
+- `kitap_sil()` - Kitap siler
+- `kitap_ara()` - Kitap arar
+- `tum_kitaplari_listele()` - Tüm kitapları gösterir
 
-### Örnek Kullanım Senaryoları
+## Clean Code Prensipleri
 
-#### 1. Yeni Kitap Ekleme
-```
-Seçiminiz (1-5): 1
+### 1. Anlamlı İsimlendirme
+```python
+# İyi örnek
+class Kutuphane:
+    def kitap_ekle(self, kitap):
 
---- Yeni Kitap Ekle ---
-ISBN: 978-3
-Başlık: 1984
-Yazar: George Orwell
-Yıl: 1949
-
-✓ '1984' kütüphaneye eklendi.
+# Değişkenler ne yaptığını açıkça belirtiyor
 ```
 
-#### 2. Kitap Arama
-```
-Seçiminiz (1-5): 3
+### 2. Tek Sorumluluk
+Her sınıf ve fonksiyon tek bir işten sorumlu:
+- `Kitap` sınıfı sadece kitap bilgilerini tutar
+- `Kutuphane` sınıfı sadece kütüphane işlemlerini yönetir
+- Her fonksiyon tek bir işlem yapar (ekle, sil, ara, listele)
 
-Kitap adı veya yazar adı: orwell
+### 3. DRY Prensibi (Don't Repeat Yourself)
+Tekrar eden kodlar fonksiyonlara alındı:
+- `bilgileri_goster()` - Kitap bilgilerini göstermek için
+- `menu_goster()` - Menüyü göstermek için
 
-🔍 'orwell' için 1 sonuç bulundu:
-ISBN: 978-3 | Başlık: 1984 | Yazar: George Orwell | Yıl: 1949 | Durum: Mevcut
-```
+### 4. Koşullu Yapılar
+```python
+# ISBN kontrolü
+if mevcut_kitap.isbn == kitap.isbn:
+    return False
 
-#### 3. Kitap Listeleme
-```
-Seçiminiz (1-5): 4
-
-📚 Merkez Kütüphane - Toplam 3 kitap:
---------------------------------------------------------------------------------
-ISBN: 978-1 | Başlık: Sefiller | Yazar: Victor Hugo | Yıl: 1862 | Durum: Mevcut
-ISBN: 978-2 | Başlık: Suç ve Ceza | Yazar: Dostoyevski | Yıl: 1866 | Durum: Mevcut
-ISBN: 978-3 | Başlık: 1984 | Yazar: George Orwell | Yıl: 1949 | Durum: Mevcut
-```
-
-## Kod Yapısı
-
-```
-kutuphane_yonetimi.py
-│
-├── Kitap (Class)
-│   ├── __init__()           # Yapıcı method
-│   └── bilgileri_goster()   # Kitap bilgilerini yazdırma
-│
-├── Kutuphane (Class)
-│   ├── __init__()                # Yapıcı method
-│   ├── kitap_ekle()              # Kitap ekleme fonksiyonu
-│   ├── kitap_sil()               # Kitap silme fonksiyonu
-│   ├── kitap_ara()               # Kitap arama fonksiyonu
-│   └── tum_kitaplari_listele()   # Listeleme fonksiyonu
-│
-├── menu_goster()            # Menü gösterme fonksiyonu
-└── main()                   # Ana program fonksiyonu
+# Arama kontrolü
+if arama_terimi in kitap.baslik.lower():
+    bulunan_kitaplar.append(kitap)
 ```
 
-## Proje İstatistikleri
+### 5. Döngüler
+```python
+# Her kitap için kontrol
+for kitap in self.kitaplar:
+    kitap.bilgileri_goster()
+```
 
-- **Toplam Satır Sayısı**: ~145 satır (yorumlarla birlikte)
-- **Sınıf Sayısı**: 2
-- **Fonksiyon Sayısı**: 6
-- **Kod Satırı**: ~100 satır (yorumlar hariç)
+## Program Mantığı
 
-## Güvenlik Özellikleri
+1. **Başlangıç**: Kutuphane nesnesi oluşturulur
+2. **Döngü**: Kullanıcı menüden seçim yapar
+3. **İşlem**: Seçime göre ilgili fonksiyon çalışır
+4. **Kontrol**: Veri doğrulaması yapılır (ISBN kontrolü vb.)
+5. **Çıktı**: Kullanıcıya sonuç gösterilir
+6. **Tekrar**: Menüye geri dönülür (çıkış seçilene kadar)
 
-- ISBN benzersizlik kontrolü
-- Boş liste kontrolü
-- Geçersiz giriş kontrolü
-- Hata mesajları ve kullanıcı bilgilendirme
+## Algoritmik Düşünme
 
-## Geliştirme Fikirleri
+- **Girdi**: ISBN, başlık, yazar, yıl
+- **İşlem**: Ekleme, silme, arama, listeleme
+- **Çıktı**: Başarı/hata mesajları, kitap listesi
 
-Bu projeyi geliştirmek için:
-- Dosyaya kaydetme/yükleme özelliği eklenebilir
-- Ödünç verme/iade sistemi geliştirilebilir
-- Kitap kategorileri eklenebilir
-- Veritabanı entegrasyonu yapılabilir
-- GUI (Grafik Arayüz) eklenebilir
+Detaylı algoritma için: [ALGORITMA.md](ALGORITMA.md)
 
-## Lisans
+Akış şeması için: [AKIS_SEMASI.md](AKIS_SEMASI.md)
 
-Bu proje eğitim amaçlı hazırlanmıştır ve özgürce kullanılabilir.
+## Kod İstatistikleri
 
-## İletişim
-
-Sorularınız için GitHub Issues bölümünü kullanabilirsiniz.
+- Satır: ~140
+- Sınıf: 2
+- Fonksiyon: 6
+- Koşullu yapı: Var (if-elif-else)
+- Döngü: Var (for, while)
 
 ---
-**Not**: Bu proje, Python programlama dilinin temel özelliklerini öğrenmek ve uygulamak için hazırlanmış bir eğitim projesidir.
+
+Eğitim amaçlı proje - Özgürce kullanılabilir
