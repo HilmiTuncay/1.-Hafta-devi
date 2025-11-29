@@ -5,7 +5,7 @@ Python ile geliştirilmiş basit kitap yönetim programı.
 ## Özellikler
 
 - Kitap ekleme, silme, arama ve listeleme
-- ISBN kontrolü
+- ID kontrolü
 - Kullanıcı dostu menü sistemi
 
 ## Çalıştırma
@@ -50,8 +50,8 @@ Tekrar eden kodlar fonksiyonlara alındı:
 
 ### 4. Koşullu Yapılar
 ```python
-# ISBN kontrolü
-if mevcut_kitap.isbn == kitap.isbn:
+# ID kontrolü
+if mevcut_kitap.id == kitap.id:
     return False
 
 # Arama kontrolü
@@ -71,13 +71,13 @@ for kitap in self.kitaplar:
 1. **Başlangıç**: Kutuphane nesnesi oluşturulur
 2. **Döngü**: Kullanıcı menüden seçim yapar
 3. **İşlem**: Seçime göre ilgili fonksiyon çalışır
-4. **Kontrol**: Veri doğrulaması yapılır (ISBN kontrolü vb.)
+4. **Kontrol**: Veri doğrulaması yapılır (ID kontrolü vb.)
 5. **Çıktı**: Kullanıcıya sonuç gösterilir
 6. **Tekrar**: Menüye geri dönülür (çıkış seçilene kadar)
 
 ## Algoritmik Düşünme
 
-- **Girdi**: ISBN, başlık, yazar, yıl
+- **Girdi**: ID, başlık, yazar, yıl
 - **İşlem**: Ekleme, silme, arama, listeleme
 - **Çıktı**: Başarı/hata mesajları, kitap listesi
 

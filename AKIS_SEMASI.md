@@ -14,19 +14,19 @@
       │ Göster  │         │
       └────┬────┘         │
            ↓              │
-    Kullanıcı Seçim      │
+    Kullanıcı Seçim       │
            ↓              │
-       ╱Seçim?╲          │
+       ╱Seçim?╲           │
       ╱         ╲         │
-     ◇───────────◇        │
+     ◇───────────◇       │
      │           │        │
-  1-4│          │5       │
+  1-4│          │5        │
      │           │        │
-  İşlem        Çıkış     │
-  Yap           ↓        │
-     │        [BİTİR]    │
-     │                   │
-     └───────────────────┘
+  İşlem        Çıkış      │
+  Yap           ↓         │ 
+     │        [BİTİR]     │
+     │                    │
+     └───────────────────-┘
 ```
 
 ## Kitap Ekleme İşlemi
@@ -35,18 +35,18 @@
     [Kitap Ekle]
          ↓
   Bilgileri Al
-  (ISBN, Başlık, Yazar, Yıl)
+  (ID, Başlık, Yazar, Yıl)
          ↓
     Kitap Oluştur
          ↓
-    ╱ISBN Var mı?╲
-   ╱              ╲
-  ◇────────────────◇
-  │Evet        Hayır│
-  ↓                 ↓
-Hata Mesajı    Listeye Ekle
-  ↓                 ↓
-Return         Başarı Mesajı
+    ╱ID Var mı?╲
+   ╱            ╲
+  ◇──────────────◇
+  │Evet      Hayır│
+  ↓              ↓
+Hata Mesajı  Listeye Ekle
+  ↓              ↓
+Return      Başarı Mesajı
 ```
 
 ## Kitap Silme İşlemi
@@ -54,7 +54,7 @@ Return         Başarı Mesajı
 ```
     [Kitap Sil]
          ↓
-  ISBN Numarası Al
+  ID Numarası Al
          ↓
    ┌─────────────┐
    │ Kitaplar    │

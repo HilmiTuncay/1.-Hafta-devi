@@ -17,7 +17,7 @@ Kütüphanedeki kitapları eklemek, silmek, aramak ve listelemek için bir siste
         - Kitap bilgilerini al
         - Kitap ekle
    4.4. EĞER seçim = 2 İSE
-        - ISBN al
+        - ID al
         - Kitabı sil
    4.5. EĞER seçim = 3 İSE
         - Arama terimi al
@@ -31,10 +31,10 @@ Kütüphanedeki kitapları eklemek, silmek, aramak ve listelemek için bir siste
 
 ### Kitap Ekleme Algoritması
 ```
-1. Kullanıcıdan ISBN, başlık, yazar, yıl bilgilerini al
+1. Kullanıcıdan ID, başlık, yazar, yıl bilgilerini al
 2. Yeni Kitap nesnesi oluştur
 3. HER kitap İÇİN kütüphanede
-   3.1. EĞER ISBN zaten varsa
+   3.1. EĞER ID zaten varsa
         - Hata mesajı göster
         - Fonksiyonu sonlandır
 4. Kitabı listeye ekle
@@ -56,7 +56,7 @@ Kütüphanedeki kitapları eklemek, silmek, aramak ve listelemek için bir siste
 ```
 
 ## Girdiler
-- ISBN numarası
+- ID numarası
 - Kitap başlığı
 - Yazar adı
 - Yayın yılı
