@@ -42,6 +42,20 @@ def draw_diamond(ax, x, y, width, height, text, color='yellow'):
             fontsize=11, weight='bold')
 
 
+def draw_parallelogram(ax, x, y, width, height, text, color='lightgreen'):
+    """Paralel kenar çizer (girdi/çıktı için)"""
+    offset = 0.3
+    points = [[x + offset, y], [x + width, y],
+              [x + width - offset, y + height], [x, y + height]]
+    parallelogram = Polygon(points, closed=True,
+                           edgecolor='black', facecolor=color, linewidth=2)
+    ax.add_patch(parallelogram)
+    center_x = x + width / 2
+    center_y = y + height / 2
+    ax.text(center_x, center_y, text, ha='center', va='center',
+            fontsize=11, weight='bold')
+
+
 def draw_arrow(ax, x1, y1, x2, y2, label=''):
     """Ok çizer"""
     arrow = FancyArrowPatch((x1, y1), (x2, y2),
@@ -104,6 +118,11 @@ def create_flowchart():
     # 7. İşlem yap (1-4)
     draw_arrow(ax, 5, decision_y, 5, decision_y - 1.4, '1-4')
     draw_box(ax, 2.8, y, 4.4, 0.9, 'İşlem Yap', '#DDA0DD')
+    draw_arrow(ax, 5, y, 5, y - 1.2)
+    y -= 1.4
+
+    # 8. Sonuç Göster (paralel kenar - çıktı)
+    draw_parallelogram(ax, 2.8, y, 4.4, 0.9, 'Sonuç Göster', '#98FB98')
 
     # Menüye geri dön
     ax.annotate('', xy=(2.5, menu_y), xytext=(2.8, y + 0.45),
@@ -111,7 +130,7 @@ def create_flowchart():
                              connectionstyle="arc3,rad=-0.5"))
 
     # 8. Çıkış (5)
-    draw_arrow(ax, 6.8, decision_y + 0.3, 8.5, decision_y - 0.5, '5')
+    draw_arrow(ax, 6.8, decision_y + 0.3, 8.5, decision_y - 2, '5')
     draw_box(ax, 7.5, y, 2, 0.9, 'Çıkış', '#90EE90')
     draw_arrow(ax, 8.5, y, 8.5, y - 1.2)
     draw_oval(ax, 7.5, y - 1.6, 2, 0.7, 'BİTİR', '#D3D3D3')
