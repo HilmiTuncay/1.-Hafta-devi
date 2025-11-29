@@ -144,6 +144,24 @@ def menu_goster():
     print("5. Cikis")
     print("="*50)
 
+def sayi_al(mesaj, min_deger, max_deger):
+    while True:  # Doğru girene kadar sonsuza dek dön
+        girdi = input(mesaj)  # Kullanıcıdan veriyi al
+        
+        try:
+            # 1. Adım: Sayıya çevirmeyi dene
+            # (Eğer kullanıcı "abc" yazarsa burada hata çıkar ve except'e düşer)
+            sayi = int(girdi)
+            
+            # 2. Adım: Aralığı kontrol et
+            if min_deger <= sayi <= max_deger:
+                return sayi  # Her şey doğru! Sayıyı ver ve döngüden çık.
+            else:
+                print(f"⚠️ Lütfen {min_deger} ile {max_deger} arasında bir sayı giriniz!")
+        
+        except ValueError:
+            # Eğer sayı yerine harf girerse burası çalışır
+            print("❌ Hatalı giriş! Lütfen sadece rakam kullanın.")
 
 def main():
     """Ana program"""
@@ -165,10 +183,10 @@ def main():
         if secim == "1":
             # Kitap Ekle
             print("\n--- Yeni Kitap Ekle ---")
-            id = input("ID: ").strip()
+            id = sayi_al("ID: ",0,999999)
             baslik = input("Baslik: ").strip()
             yazar = input("Yazar: ").strip()
-            yil = input("Yil: ").strip()
+            yil = sayi_al("Yıl: ",0,2025)
 
             if id and baslik and yazar and yil:
                 yeni_kitap = Kitap(id, baslik, yazar, yil)
